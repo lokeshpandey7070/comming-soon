@@ -1,0 +1,120 @@
+<html>
+	<head>
+	</head>
+	<body onload="load()">
+		<script type="text/javascript">
+		    
+
+		   // target date
+
+                    
+                    function load()
+                    {
+                    setInterval(myTimer, 1000);
+                  }
+
+                    function myTimer()
+                    {
+                    
+                    var target_date=31;
+                    var target_hours=11;
+                    var target_minutes=59;
+                    var target_seconds=60;
+
+                    // current date
+
+                    var d=new Date();
+                    var current_date=d.getDate();
+                    var current_hours=d.getHours();
+                    current_hours+=1;
+                    var current_minutes=d.getMinutes();
+                    var current_seconds=d.getSeconds();
+
+                    var mon=d.getMonth();
+                    mon+=1
+
+                    /*
+                    alert("date"+current_date);
+                    alert("hour"+current_hours);
+                    alert("min"+current_minutes);
+                    alert("sec"+current_seconds);
+                    alert("month"+mon);
+                    */
+
+                    // operations assigning remaining date
+
+                    var rem_seconds=0;
+                    var rem_minutes=0;
+                    var rem_hours=0;
+                    var rem_date=0;
+
+
+
+		// condition 1 if target second is greater then cur sec
+			
+			if(target_seconds<current_seconds)
+			{
+				target_seconds+=60;
+				rem_seconds=target_seconds-current_seconds;
+				target_minutes-=1;
+			}
+			else
+			{
+				rem_seconds=target_seconds-current_seconds;
+			}
+
+
+			// condition for minutes is greater than target min
+			if(target_minutes<current_minutes)
+			{
+				target_minutes+=60;
+				rem_minutes=target_minutes-current_minutes;
+				target_hours-=1;
+			}
+			else
+			{
+				rem_minutes=target_minutes-current_minutes;
+			}
+
+			// condtion for hours
+
+		    if(target_hours<current_hours)
+			{
+				target_hours+=12;
+				rem_hours=target_hours-current_hours;
+				target_date-=1;
+			}
+			else
+			{
+				var rem_hours=target_hours-current_hours;
+			}
+
+			// condtion for hours
+
+		    if(target_date<current_date)
+			{
+				target_date+=30;
+				rem_date=target_date-current_date;
+				
+			}
+			else
+			{
+				rem_date=target_date-current_date;
+			}
+
+         
+                    
+
+		    document.getElementById("day").innerHTML = rem_date;
+		    document.getElementById("hour").innerHTML = rem_hours;
+		    document.getElementById("min").innerHTML = rem_minutes;
+            document.getElementById("sec").innerHTML = rem_seconds;
+
+                    
+
+                  }
+	</script>
+
+	<h1 id="day"></h1><h1 id="hour"></h1><h1 id="min"></h1><h1 id="sec"></h1>
+	</body>
+</html>

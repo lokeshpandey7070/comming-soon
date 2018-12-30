@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+
+	<!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Coming soon || LokeshPandey.in</title>
+   <meta name="description" content="">  
+   <meta name="author" content="">
+
+   <!-- Mobile Specific Metas
+   ================================================== -->
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+   <!-- CSS
+   ================================================== -->
+   <link rel="stylesheet" href="css/base.css">
+   <link rel="stylesheet" href="css/vendor.css">
+   <link rel="stylesheet" href="css/main.css"> 
+    <link rel="stylesheet" href="css/animate.css">
+
+   <!-- Modernizr
+   =================================================== -->
+   <script src="js/modernizr.js"></script>
+
+   <!-- Favicons
+   =================================================== -->
+   <link rel="shortcut icon" href="favicon1.png" >
+    
+</head>
+    
+<body onload="load()">
+
+   
+   <div id="content-wrap">
+
+      <!-- main  -->
+      <main class="row" style="margin-top: -50px;">
+
+            <header class="site-header">
+               <div class="logo">
+                    <h1>LOGO</h1>
+               </div> 
+            </header>
+
+            <div id="main-content" class="twelve columns">
+
+              
+
+               <p style="margin-top: -20px;"> tag line
+                </p>
+
+               <h2>Coming Soon</h2>
+
+               <div id="counter" class="group">
+
+
+                  <script type="text/javascript">
+
+                    function load()
+                    {
+                    		/* this function is used for call every second recursively*/
+                    		setInterval(myTimer, 1000);
+                  	}
+
+                  	/*our logical code is placed inside this function*/
+                    function myTimer()
+                    {
+
+                    	/*set Your target lunching date*/
+	                    var target_year=2019
+	                    var target_month=1;
+	                    var target_date=1;
+	                    var target_hours=0;
+	                    var target_minutes=0;
+	                    var target_seconds=0;
+
+	                    // get  current date using predefined methods
+
+	                    var d=new Date();
+
+	                    var current_year=d.getFullYear();
+
+	                    var current_date=d.getDate();
+	                    var current_hours=d.getHours();
+	            
+	                    var current_minutes=d.getMinutes();
+	                    var current_seconds=d.getSeconds();
+
+	                    var mon=d.getMonth();
+	                    mon+=1
+
+	                    /*condtion first check your target date & time meet curent date and time or exceed if yes then redirect to your home page other wise calculate remaining time*/
+
+	                    if(target_seconds <= current_seconds && target_minutes <= current_minutes && target_hours <= current_hours && target_date <= current_date && target_month == mon && target_year == current_year)
+
+                    	{
+
+                    			window.location.href="developerzone/index.html";
+
+                    	}
+                    	else
+                    	{
+                   
+
+		                    // operations assigning remaining date
+
+		                    var rem_seconds=0;
+		                    var rem_minutes=0;
+		                    var rem_hours=0;
+		                    var rem_date=0;
+
+
+
+			    		// condition 1 if target second is less then cur sec
+			      
+				      if(target_seconds<current_seconds)
+				      {
+				        target_seconds+=60;
+				        rem_seconds=target_seconds-current_seconds;
+				        target_minutes-=1;
+				      }
+				      else
+				      {
+				        rem_seconds=target_seconds-current_seconds;
+				      }
+
+
+				      // condition for target minutes is less than target min
+				      if(target_minutes<current_minutes)
+				      {
+				        target_minutes+=60;
+				        rem_minutes=target_minutes-current_minutes;
+				        target_hours-=1;
+				      }
+				      else
+				      {
+				        rem_minutes=target_minutes-current_minutes;
+				      }
+
+				      // condtion for hours
+
+				      if(target_hours<current_hours)
+				      {
+				        target_hours+=24;
+				        rem_hours=target_hours-current_hours;
+				        target_date-=1;
+				      }
+				      else
+				      {
+				        var rem_hours=target_hours-current_hours;
+				      }
+
+				      // condtion for date
+
+				        if(target_date<current_date)
+				        {
+				                   if(mon==1 ||mon==3 || mon==5 || mon==7 || mon==8 || mon==10 || mon==12)
+				                    {
+				                         target_date+=31;
+				                    }
+				                    if(mon==4 ||mon==6 || mon==9 || mon==11 )
+				                    {
+				                         target_date+=30;
+				                    }
+
+				                    if(mon==2)
+				                    {
+				                        if(current_year%4==0)
+				                        {
+				                            target_date+=29;
+				                        }
+				                        else
+				                        {
+				                            target_date+=28;
+				                        }
+				                    }
+				                  rem_date=target_date-current_date;
+				        
+				      }
+				      else
+				      {
+				        rem_date=target_date-current_date;
+				      }
+
+				     
+				     /*Print remaining time in your webpage (only positive value )*/
+				                    
+				      	if(rem_date>=0)
+				      	{
+				        	document.getElementById("days").innerHTML = rem_date+'<em>days</em>';
+				        }
+				        if(rem_hours>=0)
+				        {
+				        	document.getElementById("hours").innerHTML = rem_hours+'<em>hours</em>';
+				        }
+				        if(rem_minutes>=0)
+				        {
+				        	document.getElementById("minutes").innerHTML = rem_minutes+'<em>minutes</em>';
+				        }
+				        if(rem_seconds>=0)
+				        {
+				            document.getElementById("seconds").innerHTML = rem_seconds+'<em>seconds</em>';
+				        }
+		    }
+	                    
+
+	}
+
+                  
+                    
+
+
+
+                  </script>
+                  <span id="days"> <em>days</em></span> 
+                  <span id="hours"><em>hours</em></span>
+                  <span id="minutes"> <em>minutes</em></span>
+                  <span id="seconds"> <em>seconds</em></span> 
+               </div>                  
+                </div>
+               <!-- /modal-toggles --> 	
+        
+    
+            
+      </main>	      
+
+   </div><!-- /content-wrap --> 
+    	
+
+   <!-- modals
+   =================================================== -->
+	      
+	
+
+ 	<!-- footer
+   =================================================== -->
+   <footer class="group">         
+
+     	<ul class="footer-social">
+         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+         
+     	</ul>   
+
+     	<ul class="footer-copyright">
+         <li>&copy; Copyright 2018-19 CG WebTech</li>
+         
+      </ul>  
+        
+   </footer> 
+
+   <div id="preloader"> 
+    	<div id="loader">
+     	</div>
+   </div> 
+   
+<!-- Script
+=================================================== -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://maps.google.com/maps/api/js?v=3.13&amp;sensor=false"></script>    
+<script src="js/jquery.fittext.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/jquery.placeholder.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/main.js"></script>    
+        
+</body>
+</html>
